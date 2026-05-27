@@ -1,0 +1,28 @@
+#include <iostream>
+#include <windows.h> // For Sleep()
+#include <iomanip>   // For formatting
+
+using namespace std;
+
+int main() {
+    int h, m, s;
+    cout << "Set initial time (HH MM SS): ";
+    cin >> h >> m >> s;
+
+    while (true) {
+        system("cls"); // Clear screen
+        
+        // Format time with leading zeros
+        cout << setfill('0') << setw(2) << h << ":"
+             << setfill('0') << setw(2) << m << ":"
+             << setfill('0') << setw(2) << s << endl;
+
+        s++;
+        if (s == 60) { m++; s = 0; }
+        if (m == 60) { h++; m = 0; }
+        if (h == 24) { h = 0; }
+
+        Sleep(1000); // Wait for 1 second
+    }
+    return 0;
+} 
